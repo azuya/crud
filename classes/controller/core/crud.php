@@ -85,7 +85,7 @@ class Controller_Core_Crud extends Controller_Core_Main {
         }
 
 
-        Request::initial()->redirect(Kohana::$config->load('crudconfig.base_url')); //редирект на главную после операции
+        Request::initial()->redirect($retw->curent_uri); //редирект на главную после операции
 
     }
 
@@ -138,6 +138,8 @@ class Controller_Core_Crud extends Controller_Core_Main {
 
         $retw = call_user_func(array($re['callback_functions_array']['class'],
             $re['callback_functions_array']['function']));
+
+
 
         //установка язика
         I18n::lang($retw->set_lang);
@@ -320,7 +322,7 @@ class Controller_Core_Crud extends Controller_Core_Main {
             }
 
 
-            Request::initial()->redirect(Kohana::$config->load('crudconfig.base_url'));
+            Request::initial()->redirect($retw->curent_uri);
         }
 
         //вид edit
@@ -445,7 +447,7 @@ class Controller_Core_Crud extends Controller_Core_Main {
         }
 
 
-        Request::initial()->redirect(Kohana::$config->load('crudconfig.base_url'));
+        Request::initial()->redirect($retw->curent_uri);
 
     }
 
@@ -683,7 +685,7 @@ class Controller_Core_Crud extends Controller_Core_Main {
             }
 
 
-            Request::initial()->redirect(Kohana::$config->load('crudconfig.base_url'));
+            Request::initial()->redirect($retw->curent_uri);
         }
 
 

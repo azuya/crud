@@ -71,6 +71,8 @@ class Cruds extends Controller_Core_Main {
     private $rules = array();
     private $messages = array();
 
+    public $curent_uri = null;
+
     public static $id = null; //хранит id записи
 
     public function __construct () {
@@ -90,6 +92,10 @@ class Cruds extends Controller_Core_Main {
             'class' => $debug[1]['class'],
             'callback_function_name' => __FUNCTION__
         );
+
+        //для редиректа
+        $this->curent_uri = explode('_', $debug[1]['class']);
+        $this->curent_uri = mb_strtolower($this->curent_uri[1]);
 
     }
     //отображаемые столбцы
@@ -629,8 +635,8 @@ class Cruds extends Controller_Core_Main {
     public function shows_type_input_default ($information_shem) {
 
         $retuyr = array(
-            'varchar' => array('tag' => 'textarea'),
-            'text' => 'text',
+            'varchar' => 'text',
+            'text' => array('tag' => 'textarea'),
             'date' => 'date',
             'int' => 'number',
             'bigint' => 'number',
